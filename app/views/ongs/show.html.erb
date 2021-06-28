@@ -20,5 +20,10 @@
   <%= @ong.logo %>
 </p>
 
+<p>
+  <strong>Criado por:</strong>
+  <%= @ong.user.name %>
+</p>
+
 <%= link_to 'Edit', edit_ong_path(@ong) %> |
 <%= link_to 'Back', ongs_path %>
