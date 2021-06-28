@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       flash[:success] = 'Cadastro realizado com sucesso'
-      redirect_to root_url
+      redirect_to ongs_url
     else
       render 'new'
     end
