@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :ongs, :pets
-  resources :users, only: [:new, :create, :show]
+  resources :users, except: %i[index destroy]
 
   get 'home/index'
   get 'entrar', to:'sessions#new'
