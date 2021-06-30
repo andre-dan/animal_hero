@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :ongs, :pets
-  resources :users, except: %i[index destroy]
-
+  resources :pets
+  resources :users, except: %i[index destroy]  
+  resources :ongs do 
+    get 'search', on: :collection
+  end
   get 'home/index'
   get 'entrar', to:'sessions#new'
   post 'entrar', to:'sessions#create'

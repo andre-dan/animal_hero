@@ -62,6 +62,10 @@ class OngsController < ApplicationController
     end
   end
 
+  def search
+    @ongs = Ong.search(params[:q])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ong

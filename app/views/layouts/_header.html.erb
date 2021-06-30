@@ -10,7 +10,6 @@
       </button>
       <%= link_to 'Animal Hero', root_url, class: 'navbar-brand' %>
     </div>
-
     <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
     <div class="collapse navbar-collapse" id="expanded-menu">
       <ul class="nav navbar-nav">
@@ -19,9 +18,7 @@
             <%= link_to 'Nova Conta', new_user_path %>
           </li>
         <%end %>
-
-      </ul>
-
+        </ul>
       <ul class="nav navbar-nav navbar-right">
         <%if !user_signed_in?%>
           <li>
