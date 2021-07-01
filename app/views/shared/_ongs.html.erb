@@ -12,6 +12,9 @@
       <% end %>
   </ul>
 </div>
+<% if @ongs.empty?%>
+  <h3> Nenhuma ong cadastrada ou encontrada.</h3>
+<% end %>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -31,7 +34,7 @@
       <td><%= ongs.nome %></td>
       <td><%= ongs.email %></td>
       <td><%= ongs.estado %></td>
-      <td><%= image_tag ongs.logo, size: "60x65" %></td>
+      <td><%= ongs.logo %></td>
        <td><%= ongs.user.name %></td>
 
       <td>
