@@ -1,10 +1,11 @@
 class OngsController < ApplicationController
-  before_action :set_ong, only: [:show, :edit, :update, :destroy]
+  before_action :set_ong, only: %i[show edit update destroy]
+  before_action :authenticate
 
   # GET /ongs
   # GET /ongs.json
   def index
-    @ongs = Ong.all
+    @ongs = Ong.select { |o| o.user_id == current_user.id } 
   end
 
   # GET /ongs/1
@@ -26,7 +27,6 @@ class OngsController < ApplicationController
   def create
     @ong = Ong.new(ong_params)
     @ong.user = current_user
-    return redirect_to entrar_path, notice:'Nenhum usuário logado, precisa logar primeiro.' unless user_signed_in?
     respond_to do |format|
       if @ong.save
         format.html { redirect_to @ong, notice: 'Ong criada com sucesso' }
@@ -75,5 +75,9 @@ class OngsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ong_params
       params.require(:ong).permit(:nome, :email, :estado, :logo)
+    end
+
+    def authenticate
+      return redirect_to entrar_path, notice:'Nenhum usuário logado, precisa logar primeiro.' unless user_signed_in?
     end
 end
