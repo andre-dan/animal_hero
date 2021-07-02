@@ -1,9 +1,10 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: %i[show edit update destroy]
   before_action :set_options_pet, :set_options_ong, only: %i[new create edit update]
+  before_action :authenticate, only: %i[index edit show]
 
   def index
-    @pets = Pet.all
+    @pets = current_user.pets
   end
 
   def show
@@ -66,5 +67,9 @@ class PetsController < ApplicationController
 
     def set_options_ong
       @options_ong = Ong.all.pluck(:nome, :id)
+    end
+
+    def authenticate
+      return redirect_to entrar_path, notice:'Nenhum usuário logado, precisa logar primeiro.' unless user_signed_in?
     end
 end
