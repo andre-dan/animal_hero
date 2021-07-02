@@ -51,6 +51,11 @@ class PetsController < ApplicationController
     end
   end
 
+  def search
+    @pets = Pet.search(params[:q])
+  end
+
+
   private
     
     def set_pet
@@ -58,7 +63,7 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-      params.require(:pet).permit(:name, :species, :birth_date, :ong_id, :avatar)
+      params.require(:pet).permit(:name, :species, :birth_date, :ong_id, :avatar, :situation)
     end
 
     def set_options_pet
@@ -66,7 +71,8 @@ class PetsController < ApplicationController
     end
 
     def set_options_ong
-      @options_ong = Ong.all.pluck(:nome, :id)
+      
+      @options_ong = (Ong.select { |o| o.user_id == current_user.id }).pluck(:nome, :id)
     end
 
     def authenticate
