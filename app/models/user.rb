@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   before_save :email_downcase
   has_many :ongs
+  has_many :pets, through: :ongs
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
