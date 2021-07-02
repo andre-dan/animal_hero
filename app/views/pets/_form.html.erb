@@ -18,8 +18,26 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :breed %>
+    <%= form.text_field :breed, class:"form-control", placeholder:"Raça do pet ..."  %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :species %>
     <%= form.select(:species, @options_pet, {include_blank: 'Selecione a especie...'}, class:"form-control")  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.radio_button :sex, 'Macho' %>
+    <%= form.label :sex, value: 'Macho' %>
+
+    <%= form.radio_button :sex, 'Fêmea' %>
+    <%= form.label :sex, value: 'Fêmea' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, class:"form-control", placeholder:"Digite o peso..."  %>
   </div>
 
   <div class="form-group">
@@ -36,6 +54,7 @@
   <%= form.label :ong_id %>
   <%= form.select(:ong_id, @options_ong, {include_blank: 'Afiliada a loja ...'}, class:"form-control") %>
 </div>
+
 
 <div class="form-group">
     <%= form.radio_button :situation, 'Propriedade' %>
