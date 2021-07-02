@@ -9,7 +9,7 @@
   </ul>
 </div>
   <div class="form-inline justify-center">
-    <%= form_with url: search_pets_path, local: true, method: :get do |f| %>
+    <%= form_with url: search_ongs_path, local: true, method: :get do |f| %>
       <%= f.text_field :q, class:"form-control mr-sm-2", type:"search", placeholder: 'Pesquisar ...' %>
       <%= f.submit 'Pesquisar', class:'btn btn-info' %>
     <% end %>
