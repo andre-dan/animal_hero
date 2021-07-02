@@ -20,7 +20,10 @@
   <tr>
     <th><%= model_class.human_attribute_name(:name) %></th>
     <th><%= model_class.human_attribute_name(:species) %></th>
+     <th><%= model_class.human_attribute_name(:breed) %>
     <th><%= model_class.human_attribute_name(:birth_date) %></th>
+     <th><%= model_class.human_attribute_name(:sex) %>
+      <th><%= model_class.human_attribute_name(:weight) %>
     <th><%= model_class.human_attribute_name(:situation) %></th>
     <th><%= model_class.human_attribute_name(:avatar) %></th>
     <th style="width: 170px" ><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -31,7 +34,10 @@
     <tr>
       <td><%= pets.name %></td>
       <td><%= pets.species %></td>
+      <td><%= pets.breed %></td>
       <td><%= pets.birth_date %></td>
+      <td><%= pets.sex %></td>
+      <td><%= pets.weight %></td>
       <td><%= pets.situation %></td>
       <td><%= image_tag pets.avatar.variant(resize_to_limit: [25, 25], format: :jpeg, sampling_factor: "4:2:0", strip: true, interlace: "JPEG", colorspace: "sRGB", quality: 80) if pets.avatar.attached? %></td>
 
