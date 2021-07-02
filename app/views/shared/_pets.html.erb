@@ -5,11 +5,13 @@
                 new_pet_path,
                 :class => 'btn btn-primary' %>
   </h1>
-    <%= form_with url: search_pets_path, local: true, method: :get do |f| %>
-      <%= f.text_field :q, type:"search", placeholder: 'Digite algo..' %>
-      <%= f.submit 'Pesquisar', :class => 'btn btn-info' %>
-    <% end %>
 </div>
+<div class="form-inline justify-center">
+    <%= form_with url: search_pets_path, local: true, method: :get do |f| %>
+      <%= f.text_field :q, class:"form-control mr-sm-2", type:"search", placeholder: 'Pesquisar ...' %>
+      <%= f.submit 'Pesquisar', class:'btn btn-info' %>
+    <% end %>
+  </div>  
 <% if @pets.empty?%>
   <h3> Nenhum Pet cadastrado ou encontrado.</h3>
 <% end %>
@@ -31,7 +33,7 @@
       <td><%= pets.species %></td>
       <td><%= pets.birth_date %></td>
       <td><%= pets.situation %></td>
-      <td><%= link_to image_tag(pets.avatar) if pets.avatar.attached? %></td>
+      <td><%= image_tag pets.avatar.variant(resize_to_limit: [25, 25], format: :jpeg, sampling_factor: "4:2:0", strip: true, interlace: "JPEG", colorspace: "sRGB", quality: 80) if pets.avatar.attached? %></td>
 
       <td>
         <%= link_to content_tag(:i,'Mostrar'),
