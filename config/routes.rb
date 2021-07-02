@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :pets
+  resources :pets do
+    get 'search', on: :collection
+  end
   resources :users, except: %i[index destroy]  
   resources :ongs do 
     get 'search', on: :collection

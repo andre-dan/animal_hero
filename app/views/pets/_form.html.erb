@@ -10,6 +10,13 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= form.radio_button :situation, 'propriedade' %>
+    <%= form.label :situation, value: 'Propriedade' %>
+
+    <%= form.radio_button :situation, 'abandonado' %>
+    <%= form.label :situation, value: 'Abandonado' %>
+  </div>
 
   <div class="field">
     <%= form.label :name %>
